@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -26,16 +24,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Add Routing and Endpoints here
+// Add RazorPages and ControllerRoute here
 app.UseRouting();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapRazorPages();
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}"
-        );
-});
-
+app.MapRazorPages();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
